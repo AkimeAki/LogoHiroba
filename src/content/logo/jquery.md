@@ -1,6 +1,6 @@
 ---
 name: "jQuery"
-url: "https://brand.jquery.org"
+url: "https://jquery.com"
 downloadUrl: "https://brand.jquery.org/logos/"
 termsUrl: "https://brand.jquery.org/logos/"
 ---
