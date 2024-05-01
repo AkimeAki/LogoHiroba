@@ -14,14 +14,17 @@ const logos = await getCollection("logo");
 				})
 				.map((logo) => {
 					return (
-						<a class="logo-link" href={`/${logo.slug}`}>
-							<img
-								class="logo-image"
-								src={`/logos/${logo.slug}.png`}
-								alt={`${logo.data.name}のロゴ`}
-								transition:name="logo-image"
-							/>
-						</a>
+						<div class="logo-wrap">
+							<a class="logo-link" href={`/${logo.slug}`}>
+								<img
+									class="logo-image"
+									src={`/logos/${logo.slug}.png`}
+									alt={`${logo.data.name}のロゴ`}
+									transition:name="logo-image"
+								/>
+							</a>
+							<h2 class="logo-name">{logo.data.name}</h2>
+						</div>
 					);
 				})
 		}
@@ -36,13 +39,19 @@ const logos = await getCollection("logo");
 		align-items: center;
 		gap: 30px;
 
-		.logo-link {
+		.logo-wrap {
 			user-select: none;
 
-			.logo-image {
-				width: 150px;
-				aspect-ratio: 1/1;
-				object-fit: contain;
+			.logo-link {
+				.logo-image {
+					width: 150px;
+					aspect-ratio: 1/1;
+					object-fit: contain;
+				}
+			}
+
+			.logo-name {
+				text-align: center;
 			}
 		}
 	}
