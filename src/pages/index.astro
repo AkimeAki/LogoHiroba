@@ -39,6 +39,10 @@ const logos = await getCollection("logo");
 		align-items: center;
 		gap: 50px;
 
+		@media (max-width: 600px) {
+			gap: 20px;
+		}
+
 		.logo-wrap {
 			max-width: 150px;
 			width: 100%;
@@ -54,6 +58,10 @@ const logos = await getCollection("logo");
 
 			.logo-name {
 				text-align: center;
+
+				@media (max-width: 600px) {
+					font-size: 15px;
+				}
 			}
 		}
 	}
