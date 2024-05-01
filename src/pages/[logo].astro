@@ -28,7 +28,7 @@ const { Content } = await logo.render();
 			<tbody>
 				<tr>
 					<th>サービス名</th>
-					<td>{logo.data.name}</td>
+					<td>{logo.data.name}{logo.data.unofficial && <span>（非公式）</span>}</td>
 				</tr>
 				<tr>
 					<th>サービスURL</th>

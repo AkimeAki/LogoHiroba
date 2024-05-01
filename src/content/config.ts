@@ -6,7 +6,8 @@ const logoCollection = defineCollection({
 		name: z.string(),
 		url: z.string(),
 		downloadUrl: z.string().optional(),
-		termsUrl: z.string().optional()
+		termsUrl: z.string().optional(),
+		unofficial: z.boolean().optional()
 	})
 });
 

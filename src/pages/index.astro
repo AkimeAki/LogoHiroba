@@ -23,7 +23,10 @@ const logos = await getCollection("logo");
 									transition:name={`${logo.slug}-image`}
 								/>
 							</a>
-							<h2 class="logo-name">{logo.data.name}</h2>
+							<h2 class="logo-name">
+								{logo.data.name}
+								{logo.data.unofficial && <span class="unofficial">（非公式）</span>}
+							</h2>
 						</div>
 					);
 				})
@@ -44,9 +47,11 @@ const logos = await getCollection("logo");
 		}
 
 		.logo-wrap {
+			position: relative;
 			max-width: 150px;
 			width: 100%;
 			user-select: none;
+			padding-bottom: 30px;
 
 			.logo-link {
 				.logo-image {
@@ -57,10 +62,20 @@ const logos = await getCollection("logo");
 			}
 
 			.logo-name {
+				position: absolute;
+				top: calc(100% - 30px);
+				left: 50%;
+				transform: translateX(-50%);
 				text-align: center;
+				white-space: nowrap;
 
 				@media (max-width: 600px) {
 					font-size: 15px;
+				}
+
+				.unofficial {
+					display: block;
+					font-size: 13px;
 				}
 			}
 		}
