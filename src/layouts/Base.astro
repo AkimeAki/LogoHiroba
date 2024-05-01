@@ -32,6 +32,7 @@ const pageTitle = title === undefined ? serviceTitle : `${title}｜${serviceTitl
 				() => {
 					gtag("js", new Date());
 					gtag("config", "GTM-K9M9K2B6");
+					dataLayer.push({ event: "astro-page-load" });
 				},
 				{ once: false }
 			);
