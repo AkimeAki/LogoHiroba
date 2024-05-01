@@ -1,0 +1,49 @@
+---
+import Base from "@/layouts/Base.astro";
+import { getCollection } from "astro:content";
+
+const logos = await getCollection("logo");
+---
+
+<Base>
+	<div id="logo-area">
+		{
+			[...logos]
+				.sort((a, b) => {
+					return b.toString().toLowerCase() < a.toString().toLowerCase() ? -1 : 1;
+				})
+				.map((logo) => {
+					return (
+						<a class="logo-link" href={`/${logo.slug}`}>
+							<img
+								class="logo-image"
+								src={`/logos/${logo.slug}.png`}
+								alt={`${logo.data.name}のロゴ`}
+								transition:name="logo-image"
+							/>
+						</a>
+					);
+				})
+		}
+	</div>
+</Base>
+
+<style lang="scss">
+	#logo-area {
+		display: grid;
+		grid-template-columns: 1fr 1fr 1fr 1fr;
+		justify-items: center;
+		align-items: center;
+		gap: 30px;
+
+		.logo-link {
+			user-select: none;
+
+			.logo-image {
+				width: 150px;
+				aspect-ratio: 1/1;
+				object-fit: contain;
+			}
+		}
+	}
+</style>

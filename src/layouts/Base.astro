@@ -1,0 +1,91 @@
+---
+import SnsIcon from "@/components/SnsIcon.astro";
+import "@/global.scss";
+import { ViewTransitions } from "astro:transitions";
+
+interface Props {
+	title?: string;
+}
+
+const { title } = Astro.props;
+
+const serviceTitle = "ロゴひろば";
+const pageTitle = title === undefined ? serviceTitle : `${title}｜${serviceTitle}`;
+---
+
+<html lang="ja">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{pageTitle}</title>
+		<ViewTransitions />
+	</head>
+	<body>
+		<header transition:name="header">
+			<a id="title-link" href="/"><h1 id="title">ロゴひろば</h1></a>
+		</header>
+		<p id="note">
+			ロゴの追加、URLの修正要望は
+			<a href="https://github.com/AkimeAki/LogoHiroba/issues" target="_blank">GitHubのIssues</a>
+			か
+			<a href="https://twitter.com/Akime_Aki" target="_blank">XのDM</a>
+			などからお願いします。
+		</p>
+		<main>
+			<slot />
+		</main>
+		<footer transition:name="footer">
+			<p id="copy">Created by 彩季</p>
+			<div id="footer-link">
+				<SnsIcon file="twitter" name="Twitter" href="https://twitter.com/Akime_Aki" />
+				<SnsIcon file="x" name="X" href="https://x.com/Akime_Aki" />
+				<SnsIcon file="github" name="GitHub" href="https://github.com/AkimeAki/LogoHiroba" />
+			</div>
+		</footer>
+		<style lang="scss">
+			header {
+				text-align: center;
+
+				#title-link {
+					text-decoration: none;
+
+					#title {
+						display: inline-block;
+						text-align: center;
+						font-size: 30px;
+						margin: 40px 0;
+						font-weight: bold;
+						color: #f99e85;
+					}
+				}
+			}
+
+			#note {
+				text-align: center;
+			}
+
+			main {
+				max-width: 1100px;
+				width: 100%;
+				margin: 50px auto 0;
+			}
+
+			footer {
+				padding: 120px 0;
+
+				#copy {
+					text-align: center;
+					font-weight: bold;
+				}
+
+				#footer-link {
+					display: flex;
+					justify-content: center;
+					padding: 20px 10px;
+					gap: 20px;
+				}
+			}
+		</style>
+	</body>
+</html>

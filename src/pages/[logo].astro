@@ -1,0 +1,86 @@
+---
+import Base from "@/layouts/Base.astro";
+import { getCollection } from "astro:content";
+
+export const getStaticPaths = async () => {
+	const logos = await getCollection("logo");
+	return logos.map((logo) => ({
+		params: { logo: logo.slug },
+		props: { logo }
+	}));
+};
+
+const { logo } = Astro.props;
+const { Content } = await logo.render();
+---
+
+<Base title={logo.data.name}>
+	<div id="logo-wrap">
+		<img
+			id="logo-image"
+			src={`/logos/${logo.slug}.png`}
+			alt={`${logo.data.name}のロゴ`}
+			transition:name="logo-image"
+		/>
+	</div>
+	<div id="logo-detail-wrap">
+		<table id="logo-detail">
+			<tbody>
+				<tr>
+					<th>サービス名</th>
+					<td>{logo.data.name}</td>
+				</tr>
+				<tr>
+					<th>サービスURL</th>
+					<td><a href={logo.data.url} target="_blank">{logo.data.url}</a></td>
+				</tr>
+				<tr>
+					<th>ロゴのダウンロードURL</th>
+					<td><a href="{logo.data.downloadUrl}" target="_blank">{logo.data.downloadUrl}</a></td>
+				</tr>
+				<tr>
+					<th>ロゴの利用規約</th>
+					<td><a href={logo.data.termsUrl} target="_blank">{logo.data.termsUrl}</a></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<Content />
+</Base>
+
+<style lang="scss">
+	#logo-wrap {
+		text-align: center;
+		user-select: none;
+		pointer-events: none;
+
+		#logo-image {
+			width: 300px;
+			aspect-ratio: 1/1;
+			object-fit: contain;
+		}
+	}
+
+	#logo-detail-wrap {
+		display: flex;
+		justify-content: center;
+		padding-top: 80px;
+
+		#logo-detail {
+			border-spacing: 15px;
+
+			tr {
+				th {
+					width: 250px;
+				}
+
+				th,
+				td {
+					padding: 10px;
+					text-align: left;
+					border-bottom: 1px solid #81d481;
+				}
+			}
+		}
+	}
+</style>
