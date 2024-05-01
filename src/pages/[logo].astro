@@ -20,7 +20,7 @@ const { Content } = await logo.render();
 			id="logo-image"
 			src={`/logos/${logo.slug}.png`}
 			alt={`${logo.data.name}のロゴ`}
-			transition:name="logo-image"
+			transition:name={`${logo.slug}-image`}
 		/>
 	</div>
 	<div id="logo-detail-wrap">
@@ -36,11 +36,29 @@ const { Content } = await logo.render();
 				</tr>
 				<tr>
 					<th>ロゴのダウンロードURL</th>
-					<td><a href={logo.data.downloadUrl} target="_blank">{logo.data.downloadUrl}</a></td>
+					<td>
+						{
+							logo.data.downloadUrl !== undefined && (
+								<a href={logo.data.downloadUrl} target="_blank">
+									{logo.data.downloadUrl}
+								</a>
+							)
+						}
+					</td>
 				</tr>
 				<tr>
 					<th>ロゴの利用規約</th>
-					<td><a href={logo.data.termsUrl} target="_blank">{logo.data.termsUrl}</a></td>
+					<td>
+						{
+							logo.data.termsUrl !== undefined ? (
+								<a href={logo.data.termsUrl} target="_blank">
+									{logo.data.termsUrl}
+								</a>
+							) : (
+								" "
+							)
+						}
+					</td>
 				</tr>
 			</tbody>
 		</table>
@@ -68,6 +86,8 @@ const { Content } = await logo.render();
 
 		#logo-detail {
 			border-spacing: 15px;
+			width: 100%;
+			max-width: 800px;
 
 			tr {
 				th {
@@ -79,6 +99,18 @@ const { Content } = await logo.render();
 					padding: 10px;
 					text-align: left;
 					border-bottom: 1px solid #81d481;
+				}
+			}
+
+			@media (max-width: 760px) {
+				tr {
+					display: block;
+					margin-bottom: 40px;
+
+					th,
+					td {
+						display: block;
+					}
 				}
 			}
 		}

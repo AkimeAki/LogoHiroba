@@ -20,7 +20,7 @@ const logos = await getCollection("logo");
 									class="logo-image"
 									src={`/logos/${logo.slug}.png`}
 									alt={`${logo.data.name}のロゴ`}
-									transition:name="logo-image"
+									transition:name={`${logo.slug}-image`}
 								/>
 							</a>
 							<h2 class="logo-name">{logo.data.name}</h2>
@@ -37,14 +37,16 @@ const logos = await getCollection("logo");
 		grid-template-columns: 1fr 1fr 1fr 1fr;
 		justify-items: center;
 		align-items: center;
-		gap: 30px;
+		gap: 50px;
 
 		.logo-wrap {
+			max-width: 150px;
+			width: 100%;
 			user-select: none;
 
 			.logo-link {
 				.logo-image {
-					width: 150px;
+					width: 100%;
 					aspect-ratio: 1/1;
 					object-fit: contain;
 				}

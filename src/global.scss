@@ -8,6 +8,9 @@
 	line-height: 1.6;
 	font-weight: normal;
 	color: #777777;
+	word-wrap: break-word;
+	overflow-wrap: break-word;
+	word-break: break-word;
 }
 
 *:focus {
