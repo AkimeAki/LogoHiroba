@@ -14,7 +14,11 @@ const { logo } = Astro.props;
 const { Content } = await logo.render();
 ---
 
-<Base title={logo.data.name}>
+<Base
+	title={logo.data.name}
+	description={`${logo.data.name}のロゴとその利用規約ページが書いてあります。追加依頼や修正依頼はGitHubのIssuesかその他連絡の取れる手段で連絡ください。`}
+	ogImage={`/logos/${logo.slug}.png`}
+>
 	<div id="logo-wrap">
 		<img
 			id="logo-image"
