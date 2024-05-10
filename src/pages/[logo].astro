@@ -1,50 +1,55 @@
 ---
 import Base from "@/layouts/Base.astro";
-import { getCollection } from "astro:content";
+import { getAllContentsList } from "@/libs/newt";
+import type { NewtLogo } from "@/type";
+import type { Content } from "newt-client-js";
 
 export const getStaticPaths = async () => {
-	const logos = await getCollection("logo");
-	return logos.map((logo) => ({
-		params: { logo: logo.slug },
+	const logos = await getAllContentsList<NewtLogo & Content>("logo", "logo");
+
+	return logos.items.map((logo) => ({
+		params: { logo: logo.id },
 		props: { logo }
 	}));
 };
 
 const { logo } = Astro.props;
-const { Content } = await logo.render();
 ---
 
 <Base
-	title={logo.data.name}
-	description={`${logo.data.name}のロゴとその利用規約ページが書いてあります。追加依頼や修正依頼はGitHubのIssuesかその他連絡の取れる手段で連絡ください。`}
-	ogImage={`/logos/${logo.slug}.png`}
+	title={logo.name}
+	description={`${logo.name}のロゴとその利用規約ページが書いてあります。追加依頼や修正依頼はGitHubのIssuesかその他連絡の取れる手段で連絡ください。`}
+	ogImage={`/logos/${logo.id}.png`}
 >
 	<div id="logo-wrap">
-		<img
-			id="logo-image"
-			src={`/logos/${logo.slug}.png`}
-			alt={`${logo.data.name}のロゴ`}
-			transition:name={`${logo.slug}-image`}
-		/>
+		<img id="logo-image" src={logo.image.src} alt={`${logo.name}のロゴ`} transition:name={`${logo.id}-image`} />
 	</div>
 	<div id="logo-detail-wrap">
 		<table id="logo-detail">
 			<tbody>
 				<tr>
 					<th>サービス名</th>
-					<td>{logo.data.name}{logo.data.unofficial && <span>（非公式）</span>}</td>
+					<td>{logo.name}{!logo.isOfficial && <span>（非公式）</span>}</td>
 				</tr>
 				<tr>
 					<th>サービスURL</th>
-					<td><a href={logo.data.url} target="_blank">{logo.data.url}</a></td>
+					<td>
+						{
+							logo.url !== undefined && (
+								<a href={logo.url} target="_blank">
+									{logo.url}
+								</a>
+							)
+						}
+					</td>
 				</tr>
 				<tr>
 					<th>ロゴのダウンロードURL</th>
 					<td>
 						{
-							logo.data.downloadUrl !== undefined && (
-								<a href={logo.data.downloadUrl} target="_blank">
-									{logo.data.downloadUrl}
+							logo.downloadUrl !== undefined && (
+								<a href={logo.downloadUrl} target="_blank">
+									{logo.downloadUrl}
 								</a>
 							)
 						}
@@ -54,12 +59,10 @@ const { Content } = await logo.render();
 					<th>ロゴの利用規約</th>
 					<td>
 						{
-							logo.data.termsUrl !== undefined ? (
-								<a href={logo.data.termsUrl} target="_blank">
-									{logo.data.termsUrl}
+							logo.termsUrl !== undefined && (
+								<a href={logo.termsUrl} target="_blank">
+									{logo.termsUrl}
 								</a>
-							) : (
-								" "
 							)
 						}
 					</td>
@@ -67,7 +70,6 @@ const { Content } = await logo.render();
 			</tbody>
 		</table>
 	</div>
-	<Content />
 </Base>
 
 <style lang="scss">

@@ -1,31 +1,33 @@
 ---
 import Base from "@/layouts/Base.astro";
-import { getCollection } from "astro:content";
+import { getAllContentsList } from "@/libs/newt";
+import type { NewtLogo } from "@/type";
+import type { Content } from "newt-client-js";
 
-const logos = await getCollection("logo");
+const logos = await getAllContentsList<NewtLogo & Content>("logo", "logo");
 ---
 
 <Base>
 	<div id="logo-area">
 		{
-			[...logos]
+			[...logos.items]
 				.sort((a, b) => {
-					return b.toString().toLowerCase() < a.toString().toLowerCase() ? -1 : 1;
+					return b.id.toString().toLowerCase() > a.id.toString().toLowerCase() ? -1 : 1;
 				})
 				.map((logo) => {
 					return (
 						<div class="logo-wrap">
-							<a class="logo-link" href={`/${logo.slug}`}>
+							<a class="logo-link" href={`/${logo.id}`}>
 								<img
 									class="logo-image"
-									src={`/logos/${logo.slug}.png`}
-									alt={`${logo.data.name}のロゴ`}
-									transition:name={`${logo.slug}-image`}
+									src={logo.image.src}
+									alt={`${logo.name}のロゴ`}
+									transition:name={`${logo.id}-image`}
 								/>
 							</a>
 							<h2 class="logo-name">
-								{logo.data.name}
-								{logo.data.unofficial && <span class="unofficial">（非公式）</span>}
+								{logo.name}
+								{!logo.isOfficial && <span class="unofficial">（非公式）</span>}
 							</h2>
 						</div>
 					);
