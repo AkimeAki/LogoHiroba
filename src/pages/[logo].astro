@@ -1,4 +1,5 @@
 ---
+import UnofficialMark from "@/components/UnofficialMark.astro";
 import Base from "@/layouts/Base.astro";
 import { getAllContentsList } from "@/libs/newt";
 import type { NewtLogo } from "@/type";
@@ -29,7 +30,7 @@ const { logo } = Astro.props;
 			<tbody>
 				<tr>
 					<th>サービス名</th>
-					<td>{logo.name}{!logo.isOfficial && <span>（非公式）</span>}</td>
+					<td class="logo-name">{logo.name}{!logo.isOfficial && <UnofficialMark />}</td>
 				</tr>
 				<tr>
 					<th>サービスURL</th>
@@ -94,6 +95,12 @@ const { logo } = Astro.props;
 			border-spacing: 15px;
 			width: 100%;
 			max-width: 800px;
+
+			.logo-name {
+				display: flex;
+				align-items: center;
+				gap: 10px;
+			}
 
 			tr {
 				th {

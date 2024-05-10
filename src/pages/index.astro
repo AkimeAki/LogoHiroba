@@ -1,4 +1,5 @@
 ---
+import UnofficialMark from "@/components/UnofficialMark.astro";
 import Base from "@/layouts/Base.astro";
 import { getAllContentsList } from "@/libs/newt";
 import type { NewtLogo } from "@/type";
@@ -27,7 +28,7 @@ const logos = await getAllContentsList<NewtLogo & Content>("logo", "logo");
 							</a>
 							<h2 class="logo-name">
 								{logo.name}
-								{!logo.isOfficial && <span class="unofficial">（非公式）</span>}
+								{!logo.isOfficial && <UnofficialMark />}
 							</h2>
 						</div>
 					);
@@ -42,10 +43,12 @@ const logos = await getAllContentsList<NewtLogo & Content>("logo", "logo");
 		grid-template-columns: 1fr 1fr 1fr 1fr;
 		justify-items: center;
 		align-items: center;
-		gap: 50px;
+		row-gap: 70px;
+		column-gap: 50px;
 
 		@media (max-width: 600px) {
-			gap: 20px;
+			row-gap: 50px;
+			column-gap: 20px;
 		}
 
 		.logo-wrap {
@@ -70,14 +73,12 @@ const logos = await getAllContentsList<NewtLogo & Content>("logo", "logo");
 				transform: translateX(-50%);
 				text-align: center;
 				white-space: nowrap;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
 
 				@media (max-width: 600px) {
 					font-size: 15px;
-				}
-
-				.unofficial {
-					display: block;
-					font-size: 13px;
 				}
 			}
 		}
