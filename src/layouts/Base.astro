@@ -20,6 +20,13 @@ const {
 const serviceTitle = "ロゴひろば";
 const pageTitle = title === undefined ? serviceTitle : `${title}｜${serviceTitle}`;
 const path = Astro.url.pathname.replace(/^\//, "").replace(/\.html$/, "");
+
+const schema = {
+	"@context": "https://schema.org",
+	"@type": "WebSite",
+	name: serviceTitle,
+	url: Astro.site
+};
 ---
 
 <html lang="ja">
@@ -50,7 +57,7 @@ const path = Astro.url.pathname.replace(/^\//, "").replace(/\.html$/, "");
 			);
 		</script>
 		<!-- End Google Tag Manager -->
-		<meta property="og:url" content={`https://logo.aki.wtf/${path}`} />
+		<meta property="og:url" content={`${Astro.site}${path}`} />
 		<meta property="og:type" content={ogType} />
 		<meta property="og:title" content={pageTitle} />
 		<meta property="og:description" content={description} />
@@ -58,8 +65,9 @@ const path = Astro.url.pathname.replace(/^\//, "").replace(/\.html$/, "");
 		<meta property="og:image" content={ogImage} />
 		<meta name="twitter:card" content="summary" />
 		<meta name="twitter:site" content="@Akime_Aki" />
-		<link rel="icon" href="/favicon.ico" />
-		<link rel="sitemap" href="/sitemap-index.xml" />
+		<link rel="icon" href={`${Astro.site}favicon.ico`} />
+		<link rel="sitemap" href={`${Astro.site}sitemap-index.xml`} />
+		<script type="application/ld+json" is:inline set:html={JSON.stringify(schema)} />
 		<title>{pageTitle}</title>
 		<ViewTransitions />
 	</head>
