@@ -1,7 +1,9 @@
-<div class="unofficial">非公式</div>
+---
+import { css } from "@/styled-system/css";
+---
 
-<style lang="scss">
-	.unofficial {
+<div
+	class={css`
 		display: inline-block;
 		background-color: #e7e7e7;
 		line-height: 1;
@@ -14,5 +16,7 @@
 			font-size: 9px;
 			padding: 3px 5px;
 		}
-	}
-</style>
+	`}
+>
+	非公式
+</div>

@@ -12,5 +12,14 @@ export default defineConfig({
 	integrations: [sitemap()],
 	build: {
 		format: "file"
+	},
+	vite: {
+		css: {
+			preprocessorOptions: {
+				scss: {
+					api: "modern-compiler"
+				}
+			}
+		}
 	}
 });

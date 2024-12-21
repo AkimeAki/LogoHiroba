@@ -1,6 +1,8 @@
 ---
 import SnsIcon from "@/components/SnsIcon.astro";
-import "@/global.scss";
+import "@akimeaki/reset-css";
+import "@/panda.css";
+import { css } from "@/styled-system/css";
 import { ViewTransitions } from "astro:transitions";
 
 interface Props {
@@ -38,10 +40,12 @@ const schema = {
 		<meta name="author" content="彩季" />
 		<meta name="generator" content={Astro.generator} />
 		<!-- Google Tag Manager -->
-		<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-K9M9K2B6"></script>
+		<script is:inline async src="https://www.googletagmanager.com/gtm.js?id=GTM-K9M9K2B6"></script>
 		<script is:inline>
 			window.dataLayer = window.dataLayer || [];
+			// eslint-disable-next-line @typescript-eslint/no-unused-vars
 			function gtag() {
+				// eslint-disable-next-line prefer-rest-params
 				dataLayer.push(arguments);
 			}
 		</script>
@@ -81,71 +85,81 @@ const schema = {
 				style="display:none;visibility:hidden"></iframe>
 		</noscript>
 		<!-- End Google Tag Manager (noscript) -->
-		<header transition:name="header">
-			<a id="title-link" href="/"><h1 id="title">ロゴひろば</h1></a>
-		</header>
-		<p id="note">
-			ロゴの追加、URLの修正要望は
-			<a href="https://github.com/AkimeAki/LogoHiroba/issues" target="_blank">GitHubのIssues</a>
-			か
-			<a href="https://twitter.com/Akime_Aki" target="_blank">XのDM</a>
-			などからお願いします。
-		</p>
-		<main>
-			<slot />
-		</main>
-		<footer transition:name="footer">
-			<p id="copy">Created by 彩季</p>
-			<div id="footer-link">
-				<SnsIcon file="twitter" name="Twitter" href="https://twitter.com/Akime_Aki" />
-				<SnsIcon file="x" name="X" href="https://x.com/Akime_Aki" />
-				<SnsIcon file="github" name="GitHub" href="https://github.com/AkimeAki/LogoHiroba" />
-			</div>
-		</footer>
-		<style lang="scss">
-			header {
+		<header
+			transition:name="header"
+			class={css`
 				text-align: center;
-
-				#title-link {
+			`}
+		>
+			<a
+				href="/"
+				class={css`
 					text-decoration: none;
-
-					#title {
+				`}
+			>
+				<h1
+					class={css`
 						display: inline-block;
 						text-align: center;
 						font-size: 30px;
 						margin: 40px 0;
 						font-weight: bold;
 						color: #f99e85;
-					}
-				}
-			}
-
-			#note {
+					`}
+				>
+					ロゴひろば
+				</h1>
+			</a>
+		</header>
+		<p
+			class={css`
 				text-align: center;
-			}
 
-			main {
+				a {
+					color: #c72f2f;
+				}
+			`}
+		>
+			追加依頼や修正依頼は
+			<a href="https://github.com/AkimeAki/LogoHiroba/issues" target="_blank">GitHubのIssues</a>
+			か その他連絡の取れる手段で連絡ください。
+		</p>
+		<main
+			class={css`
 				max-width: 1100px;
 				width: 100%;
 				margin: 50px auto 0;
 				padding: 0 10px;
-			}
-
-			footer {
+			`}
+		>
+			<slot />
+		</main>
+		<footer
+			transition:name="footer"
+			class={css`
 				padding: 120px 0;
-
-				#copy {
+			`}
+		>
+			<p
+				class={css`
 					text-align: center;
 					font-weight: bold;
-				}
-
-				#footer-link {
+				`}
+			>
+				Created by 彩季
+			</p>
+			<div
+				class={css`
 					display: flex;
 					justify-content: center;
 					padding: 20px 10px;
 					gap: 20px;
-				}
-			}
-		</style>
+				`}
+			>
+				<SnsIcon file="twitter" name="Twitter" href="https://twitter.com/Akime_Aki" />
+				<SnsIcon file="x" name="X" href="https://x.com/Akime_Aki" />
+				<SnsIcon file="github" name="GitHub" href="https://github.com/AkimeAki/LogoHiroba" />
+			</div>
+		</footer>
 	</body>
 </html>
