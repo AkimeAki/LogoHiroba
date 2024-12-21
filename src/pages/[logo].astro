@@ -1,9 +1,9 @@
 ---
-import UnOfficialMark from "@/components/UnOfficialMark.astro";
 import Base from "@/layouts/Base.astro";
 import { css } from "@/styled-system/css";
 import { Image } from "astro:assets";
 import { getCollection } from "astro:content";
+import UnOfficialMark from "@/components/UnOfficialMark.astro";
 
 export const getStaticPaths = async () => {
 	const logos = await getCollection("logos");
