@@ -14,12 +14,12 @@ interface Props {
 
 const {
 	title,
-	description = "いろいろなサービスのロゴとその利用規約ページを集めているサイトです。追加依頼や修正依頼はGitHubのIssuesかその他連絡の取れる手段で連絡ください。",
+	description = "いろいろなサービスのロゴとその利用規約ページを個人的に集めているサイトです。追加依頼や修正依頼はGitHubのIssuesかその他連絡の取れる手段で連絡ください。",
 	ogType = "article",
 	ogImage = "/default-ogp.png"
 } = Astro.props;
 
-const serviceTitle = "ロゴひろば";
+const serviceTitle = "ロゴの規約集め";
 const pageTitle = title === undefined ? serviceTitle : `${title}｜${serviceTitle}`;
 const path = Astro.url.pathname.replace(/^\//, "").replace(/\.html$/, "");
 
