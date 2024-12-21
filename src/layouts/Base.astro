@@ -20,7 +20,7 @@ const {
 } = Astro.props;
 
 const serviceTitle = "ロゴの規約など収集所";
-const pageTitle = title === undefined ? serviceTitle : `${title}｜${serviceTitle}`;
+const pageTitle = title === undefined ? serviceTitle : `${title} - ${serviceTitle}`;
 const path = Astro.url.pathname.replace(/^\//, "").replace(/\.html$/, "");
 
 const schema = {
