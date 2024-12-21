@@ -13,6 +13,7 @@ export default defineConfig({
 	build: {
 		format: "file"
 	},
+	output: "static",
 	vite: {
 		css: {
 			preprocessorOptions: {
