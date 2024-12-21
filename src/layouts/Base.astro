@@ -3,7 +3,7 @@ import SnsIcon from "@/components/SnsIcon.astro";
 import "@akimeaki/reset-css";
 import "@/panda.css";
 import { css } from "@/styled-system/css";
-import { ViewTransitions } from "astro:transitions";
+import { ClientRouter } from "astro:transitions";
 
 interface Props {
 	title?: string;
@@ -73,7 +73,7 @@ const schema = {
 		<link rel="sitemap" href={`${Astro.site}sitemap-index.xml`} />
 		<script type="application/ld+json" is:inline set:html={JSON.stringify(schema)} />
 		<title>{pageTitle}</title>
-		<ViewTransitions />
+		<ClientRouter />
 	</head>
 	<body>
 		<!-- Google Tag Manager (noscript) -->
