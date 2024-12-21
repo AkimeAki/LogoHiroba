@@ -118,7 +118,18 @@ const { Content } = await logo.render();
 			</tbody>
 		</table>
 	</div>
-	<Content />
+	<div
+		class={[
+			css`
+				width: 100%;
+				max-width: 800px;
+				margin: 30px auto 0;
+			`,
+			"content-area"
+		].join(" ")}
+	>
+		<Content />
+	</div>
 </Base>
 
 <style lang="scss">
@@ -166,5 +177,11 @@ const { Content } = await logo.render();
 
 	a {
 		color: #c72f2f;
+	}
+
+	.content-area {
+		:global(a) {
+			color: #c72f2f;
+		}
 	}
 </style>
