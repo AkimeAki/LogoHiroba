@@ -42,12 +42,14 @@ const { Content } = await logo.render();
 		<Image
 			src={image}
 			alt={`${logo.data.name}のロゴ`}
-			width={280}
-			height={280}
+			width={300}
+			height={300}
 			transition:name={`${logo.slug}-image`}
 			class={css`
 				aspect-ratio: 1/1;
 				object-fit: contain;
+				width: 280px;
+				height: 280px;
 			`}
 		/>
 	</div>

@@ -72,11 +72,13 @@ await Astro.glob("/src/assets/logos/*.png").then((files) => {
 									class={css`
 										aspect-ratio: 1/1;
 										object-fit: contain;
+										width: 30px;
+										height: 30px;
 									`}
 									src={images[logo.slug]}
 									alt={`${logo.data.name}`}
-									width={30}
-									height={30}
+									width={40}
+									height={40}
 									transition:name={`${logo.slug}-image`}
 								/>
 								<h2
