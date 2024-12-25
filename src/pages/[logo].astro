@@ -182,6 +182,11 @@ const { Content } = await logo.render();
 	}
 
 	.content-area {
+		:global(*),
+		:global(* *) {
+			word-wrap: break-word;
+		}
+
 		:global(a) {
 			color: #c72f2f;
 		}
