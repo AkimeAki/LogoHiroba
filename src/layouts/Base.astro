@@ -16,7 +16,7 @@ const {
 	title,
 	description = "いろいろなサービスのロゴとその利用規約ページを個人的に集めているサイトです。追加依頼や修正依頼はGitHubのIssuesかその他連絡の取れる手段で連絡ください。",
 	ogType = "article",
-	ogImage = "/default-ogp.png"
+	ogImage = Astro.url.origin + "/default-ogp.png"
 } = Astro.props;
 
 const serviceTitle = "ロゴの規約など収集所";
