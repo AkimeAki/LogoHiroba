@@ -24,24 +24,24 @@ await Astro.glob("/src/assets/logos/*.png").then((files) => {
 			grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
 			align-items: center;
 			row-gap: 40px;
-			column-gap: 50px;
+			column-gap: 10px;
 
 			@media (max-width: 900px) {
 				grid-template-columns: 1fr 1fr 1fr 1fr;
 				row-gap: 50px;
-				column-gap: 20px;
+				column-gap: 10px;
 			}
 
 			@media (max-width: 700px) {
 				grid-template-columns: 1fr 1fr 1fr;
 				row-gap: 30px;
-				column-gap: 20px;
+				column-gap: 10px;
 			}
 
 			@media (max-width: 450px) {
 				grid-template-columns: 1fr 1fr;
 				row-gap: 30px;
-				column-gap: 20px;
+				column-gap: 10px;
 			}
 		`}
 	>
