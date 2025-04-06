@@ -1,6 +1,6 @@
 # URL
 
-https://logo.aki.wtf/
+https://logo.shikiiro.net/
 
 # 開発環境
 

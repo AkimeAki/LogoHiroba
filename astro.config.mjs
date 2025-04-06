@@ -7,7 +7,7 @@ export default defineConfig({
 		port: 8001,
 		host: "0.0.0.0"
 	},
-	site: "https://logo.aki.wtf",
+	site: "https://logo.shikiiro.net",
 	trailingSlash: "never",
 	integrations: [sitemap()],
 	build: {
