@@ -9,7 +9,7 @@ interface Props {
 	title?: string;
 	description?: string;
 	ogType?: string;
-	ogImage?: string;
+	ogImage?: string | undefined;
 }
 
 const {
@@ -118,7 +118,7 @@ const schema = {
 
 				a {
 					color: #95cb6f;
-					font-weight:bold;
+					font-weight: bold;
 					text-decoration: underline;
 				}
 			`}

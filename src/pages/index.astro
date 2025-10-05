@@ -67,19 +67,30 @@ await Astro.glob("/src/assets/logos/*.png").then((files) => {
 									align-items: center;
 								`}
 							>
-								<Image
-									class={css`
-										aspect-ratio: 1/1;
-										object-fit: contain;
-										width: 30px;
-										height: 30px;
-									`}
-									src={images[logo.slug]}
-									alt={`${logo.data.name}`}
-									width={40}
-									height={40}
-									transition:name={`${logo.slug}-image`}
-								/>
+								{images[logo.slug] !== undefined ? (
+									<Image
+										class={css`
+											aspect-ratio: 1/1;
+											object-fit: contain;
+											width: 30px;
+											height: 30px;
+										`}
+										src={images[logo.slug]}
+										alt={`${logo.data.name}`}
+										width={40}
+										height={40}
+										transition:name={`${logo.slug}-image`}
+									/>
+								) : (
+									<div
+										class={css`
+											aspect-ratio: 1/1;
+											object-fit: contain;
+											width: 30px;
+											height: 30px;
+										`}
+									/>
+								)}
 								<h2
 									class={css`
 										text-align: center;

@@ -30,7 +30,7 @@ const { Content } = await logo.render();
 <Base
 	title={logo.data.name}
 	description={`${logo.data.name}のロゴとその利用規約ページが書いてあります。追加依頼や修正依頼はGitHubのIssuesかその他連絡の取れる手段で連絡ください。`}
-	ogImage={Astro.url.origin + image.src}
+	ogImage={image !== undefined ? `${Astro.url.origin}${image.src}` : undefined}
 >
 	<div
 		class={css`
@@ -39,19 +39,32 @@ const { Content } = await logo.render();
 			pointer-events: none;
 		`}
 	>
-		<Image
-			src={image}
-			alt={`${logo.data.name}のロゴ`}
-			width={300}
-			height={300}
-			transition:name={`${logo.slug}-image`}
-			class={css`
-				aspect-ratio: 1/1;
-				object-fit: contain;
-				width: 280px;
-				height: 280px;
-			`}
-		/>
+		{
+			image !== undefined ? (
+				<Image
+					src={image}
+					alt={`${logo.data.name}のロゴ`}
+					width={300}
+					height={300}
+					transition:name={`${logo.slug}-image`}
+					class={css`
+						aspect-ratio: 1/1;
+						object-fit: contain;
+						width: 280px;
+						height: 280px;
+					`}
+				/>
+			) : (
+				<div
+					class={css`
+						aspect-ratio: 1/1;
+						object-fit: contain;
+						width: 280px;
+						height: 280px;
+					`}
+				/>
+			)
+		}
 	</div>
 	<div
 		class={css`
