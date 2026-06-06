@@ -23,6 +23,3 @@ pnpm-debug.log*
 .idea/
 
 styled-system
-
-*.code-workspace*
-!example.code-workspace*
