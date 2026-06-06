@@ -1,6 +1,6 @@
 ---
 name: "Microsoft"
 url: "https://www.microsoft.com"
-downloadUrl: "https://news.microsoft.com/ja-jp/corporate-logo-guideline/"
-termsUrl: "https://news.microsoft.com/ja-jp/corporate-logo-guideline/"
+downloadUrl: "https://www.microsoft.com/ja-jp/legal/intellectualproperty/trademarks"
+termsUrl: "https://www.microsoft.com/ja-jp/legal/intellectualproperty/trademarks"
 ---
