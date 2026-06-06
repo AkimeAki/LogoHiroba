@@ -12,30 +12,6 @@ https://logo.shikiiro.net/
 
 URL: http://localhost:8001/
 
-## ツール
-
-### 必須
-
--   Docker
-
-### あると便利
-
--   Make
-
-## 環境立ち上げ
-
-1. コンテナ起動
-
-    `make init`
-
-2. コンテナにアタッチ
-
-    `make attach`
-
-3. 依存関係インストール
-
-    `npm ci`
-
 ## コンテンツ管理
 
 ### ロゴに関するデータ
