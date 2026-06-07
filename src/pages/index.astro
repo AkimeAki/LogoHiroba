@@ -88,8 +88,13 @@ await Astro.glob("/src/assets/logos/*.png").then((files) => {
 											object-fit: contain;
 											width: 30px;
 											height: 30px;
+											display: flex;
+											justify-content: center;
+											align-items: center;
 										`}
-									/>
+									>
+										■
+									</div>
 								)}
 								<h2
 									class={css`

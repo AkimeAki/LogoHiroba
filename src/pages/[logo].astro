@@ -34,7 +34,8 @@ const { Content } = await logo.render();
 >
 	<div
 		class={css`
-			text-align: center;
+			display: flex;
+			justify-content: center;
 			user-select: none;
 			pointer-events: none;
 		`}
@@ -61,8 +62,15 @@ const { Content } = await logo.render();
 						object-fit: contain;
 						width: 280px;
 						height: 280px;
+						font-size: 16px;
+						font-weight: bold;
+						display: flex;
+						justify-content: center;
+						align-items: center;
 					`}
-				/>
+				>
+					規約上ロゴを表示していません。
+				</div>
 			)
 		}
 	</div>
